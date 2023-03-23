@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MvcCoreLinqToXML.Models.Escena>
+
+@{
+    Pelicula peli = ViewData["PELICULA"] as Pelicula;
+}
+@{
+    ViewData["Title"] = "EscenasPelicula";
+}
+
+<h1>Escenas Pelicula</h1>
+
+<div class="card" style="width: 18rem;">
+  <img src="@peli.Poster" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">@peli.Titulo</h5>
+    <p class="card-text">@peli.TituloOriginal</p>
+    <p class="card-text">@peli.Descripcion</p>
+  </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdPelicula)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Imagen)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPelicula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                <img src="@item.Imagen" style="width: 400px; height: 450px"/>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

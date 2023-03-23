@@ -1,0 +1,43 @@
+﻿@model Escena
+
+@{
+    Pelicula peli = ViewData["PELICULA"] as Pelicula;
+}
+@{
+    ViewData["Title"] = "EscenasPelicula";
+}
+
+<h1>Detalles Pelicula</h1>
+
+<div class="card" style="width: 30rem; float: left">
+  <img src="@peli.Poster" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">@peli.Titulo</h5>
+    <p class="card-text">@peli.TituloOriginal</p>
+    <p class="card-text">@peli.Descripcion</p>
+  </div>
+</div>
+
+<div class="card" style="width: 18rem; float: left;">
+    <h2 style="color:blue">@ViewData["DATOS"]</h2>
+    <a asp-controller="Peliculas" 
+        asp-action="DetallePeliculaEscena"
+        asp-route-posicion = "@ViewData["ANTERIOR"]"
+        asp-route-idpelicula="@Model.IdPelicula"
+        class="btn btn-danger">
+        Anterior
+    </a>
+    <a asp-controller="Peliculas" 
+        asp-action="DetallePeliculaEscena"
+        asp-route-posicion = "@ViewData["SIGUIENTE"]"
+        asp-route-idpelicula="@Model.IdPelicula"
+        class="btn btn-success">
+        Siguiente
+    </a>
+  <img src="@Model.Imagen" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">@Model.TituloEscena</h5>
+    <p class="card-text">@Model.Descripcion</p>
+    
+  </div>
+</div>
